@@ -1,0 +1,282 @@
+-- MySQL dump 10.13  Distrib 8.0.11, for Win64 (x86_64)
+--
+-- Host: localhost    Database: ecomerce
+-- ------------------------------------------------------
+-- Server version	8.0.11
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+ SET NAMES utf8 ;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `categoria`
+--
+
+DROP TABLE IF EXISTS `categoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `categoria` (
+  `idcategoria` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) NOT NULL,
+  `parentid` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `fecharegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `idestado` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idcategoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categoria`
+--
+
+LOCK TABLES `categoria` WRITE;
+/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+INSERT INTO `categoria` VALUES (1,'Hotel',1,0,'2018-06-23 14:13:43',1),(2,'Turismo',1,0,'2018-06-23 14:13:43',1),(3,'Aventura',1,0,'2018-06-23 14:13:43',1);
+/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contacto`
+--
+
+DROP TABLE IF EXISTS `contacto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `contacto` (
+  `idcontacto` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(150) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `asunto` varchar(100) DEFAULT NULL,
+  `mensaje` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`idcontacto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contacto`
+--
+
+LOCK TABLES `contacto` WRITE;
+/*!40000 ALTER TABLE `contacto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contacto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `empresa`
+--
+
+DROP TABLE IF EXISTS `empresa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `empresa` (
+  `idempresa` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `idusuario` int(11) NOT NULL,
+  `nombre` varchar(300) NOT NULL,
+  `ruc` varchar(15) NOT NULL,
+  `descripcion` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `estado` int(11) NOT NULL DEFAULT '1',
+  `direccion` varchar(300) DEFAULT NULL,
+  `imagen` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`idempresa`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `empresa`
+--
+
+LOCK TABLES `empresa` WRITE;
+/*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
+INSERT INTO `empresa` VALUES (1,1,'Sierra Dorada','10464273269','Hotel ubicado a 1.2 km del centro de la ciudad',1,'Urbanización Mariscal Cáceres Manzana I Lote 21',NULL),(2,0,'Via Via','12503654214','Hotel, ubicado a 0.1 km de la Ciudad',1,'Portal Constitucion 4, Plaza de Armas',NULL),(3,0,'Puriq Travel','20156948973','Aventura',1,'Jr 9 de Diciembre #215',NULL),(4,1,'America','10464273269','Hoteleria',0,'Jr. Asamblea Nº 205',NULL),(5,3,'HTOURS','10464273269','Empresa que brinda servicio de turismo y aventura ',0,'Jr. Asamblea Nº 205',NULL),(6,4,'TousAyacucho','10464273269','Servicio de tours a nivel ayacucho',0,'Jr. Asamblea Nº 205',NULL);
+/*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `factura`
+--
+
+DROP TABLE IF EXISTS `factura`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `factura` (
+  `idfactura` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `facturacol` varchar(45) NOT NULL,
+  PRIMARY KEY (`idfactura`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `factura`
+--
+
+LOCK TABLES `factura` WRITE;
+/*!40000 ALTER TABLE `factura` DISABLE KEYS */;
+/*!40000 ALTER TABLE `factura` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `producto`
+--
+
+DROP TABLE IF EXISTS `producto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `producto` (
+  `idproducto` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) NOT NULL,
+  `precio` decimal(18,2) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `descripcion` varchar(500) DEFAULT NULL,
+  `urlimg` varchar(500) DEFAULT NULL,
+  `idusuario` int(11) DEFAULT NULL,
+  `idempresa` mediumint(9) DEFAULT NULL,
+  `idcategoria` mediumint(9) DEFAULT NULL,
+  `idestado` int(11) DEFAULT '1',
+  `fecharegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idproducto`),
+  KEY `fk_empresa_idx` (`idempresa`),
+  KEY `fk_categoria_idx` (`idcategoria`),
+  CONSTRAINT `fk_categoria` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`idcategoria`),
+  CONSTRAINT `fk_empresa` FOREIGN KEY (`idempresa`) REFERENCES `empresa` (`idempresa`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `producto`
+--
+
+LOCK TABLES `producto` WRITE;
+/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
+INSERT INTO `producto` VALUES (1,'Millpo',90.00,2,'Tours Por las aguas turquesas de millpo','millp.jpg',1,1,2,1,'2018-07-17 21:13:26'),(2,'Doble Flex',190.00,1,'Hotel','dobleflex.jpeg',1,2,1,1,'2018-07-17 21:34:40'),(3,'Tours Campanayocc',30.00,6,'Tours en cuatri motos','campanayocc.jpg',NULL,3,3,1,'2018-07-17 21:34:40'),(4,'Habitación Matrimonial',130.00,2,'Una noche inolvidable','sierraduplex.jpeg',NULL,2,1,1,'2018-07-18 15:01:48'),(5,'Habitación Doble',90.00,10,'Habitaciones comodas','doble.jpg',NULL,2,1,1,'2018-07-18 15:01:48'),(6,'Cuatri Moto',25.00,8,'tOURS POR CMAPANAYOC','cuatrimoto.jpg',1,4,3,NULL,NULL),(14,'vilcas huaman',80.00,20,'Tours por todas las ruinas de vilcas','vilcas.jpg',4,6,2,NULL,NULL),(15,'cuarto personal',70.00,6,'cuarto individual','individual.jpg',1,4,1,NULL,NULL);
+/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reserva`
+--
+
+DROP TABLE IF EXISTS `reserva`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `reserva` (
+  `idreserva` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `idusuario` mediumint(9) NOT NULL,
+  `cantidad` int(11) NOT NULL DEFAULT '0',
+  `subtotal` decimal(10,3) NOT NULL,
+  `descuento` decimal(10,3) DEFAULT '0.000',
+  `total` decimal(10,3) NOT NULL,
+  `fecharegistro` timestamp NULL DEFAULT NULL,
+  `estadopago` char(1) DEFAULT '0',
+  `estado` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idreserva`),
+  KEY `FK_USUARIO_idx` (`idusuario`),
+  CONSTRAINT `FK_USUARIO` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reserva`
+--
+
+LOCK TABLES `reserva` WRITE;
+/*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
+INSERT INTO `reserva` VALUES (14,1,2,95.000,0.000,95.000,'2018-07-27 03:58:43',NULL,0);
+/*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reservadetalle`
+--
+
+DROP TABLE IF EXISTS `reservadetalle`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `reservadetalle` (
+  `idreservadetalle` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `idreserva` mediumint(9) NOT NULL,
+  `idproducto` mediumint(9) NOT NULL,
+  `nombre` varchar(300) NOT NULL,
+  `fechareserva` varchar(10) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `precio` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `descuento` decimal(18,2) DEFAULT '0.00',
+  PRIMARY KEY (`idreservadetalle`),
+  KEY `fk_reserva_idx` (`idreserva`),
+  KEY `fk_producto_idx` (`idproducto`),
+  CONSTRAINT `fk_producto` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idproducto`),
+  CONSTRAINT `fk_reserva` FOREIGN KEY (`idreserva`) REFERENCES `reserva` (`idreserva`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reservadetalle`
+--
+
+LOCK TABLES `reservadetalle` WRITE;
+/*!40000 ALTER TABLE `reservadetalle` DISABLE KEYS */;
+INSERT INTO `reservadetalle` VALUES (7,14,15,'cuarto personal','29/07/2019',1,70.00,0.00),(8,14,6,'Cuatri Moto','29/07/2019',1,25.00,0.00);
+/*!40000 ALTER TABLE `reservadetalle` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `usuario` (
+  `idusuario` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `direccion` varchar(200) DEFAULT NULL,
+  `direcciond` varchar(200) DEFAULT NULL,
+  `ciudad` varchar(100) DEFAULT NULL,
+  `codigo_postal` varchar(10) DEFAULT NULL,
+  `pais` varchar(100) DEFAULT NULL,
+  `region` varchar(100) DEFAULT NULL,
+  `facnombre` varchar(100) DEFAULT NULL,
+  `facapellido` varchar(100) DEFAULT NULL,
+  `factelefono` varchar(15) DEFAULT NULL,
+  `facdireccion` varchar(200) DEFAULT NULL,
+  `facdirecciond` varchar(200) DEFAULT NULL,
+  `facciudad` varchar(100) DEFAULT NULL,
+  `faccod_postal` varchar(10) DEFAULT NULL,
+  `facpais` varchar(100) DEFAULT NULL,
+  `facregion` varchar(100) DEFAULT NULL,
+  `fecharegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idusuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'prnajarro@gmail.com','123456','Pedro','najarro robles','0665231589','ayacucho maza: a lote 3','ayacucho maza: a lote 3','Huamanga','05000','Perú','- no states -','Ronald','Rojas Naccha','966999599','jr Asamblea N 203','jr Asamblea N 205','Huamanga','05000','Perú','Ayacucho',NULL),(2,'aas@gmail.com','123','Pedro','najarro robles',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'prnaccha@gmail.com','123456','Percy','rojas naccha',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'ysanchez@gmail.com','123456','Yuri','Sanchez rojas',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-07-27 14:10:36
