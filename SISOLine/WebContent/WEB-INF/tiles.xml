@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="home.index" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/home/index.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="home.nosotros" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/home/nosotros.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="home.contacto" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/home/contacto.jsp"></put-attribute>
+	</definition>
+	
+	<!-- Modulo de productos -->
+	<definition name="producto.index" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/producto/index.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="categoria.producto" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/producto/categoria.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="producto.detalle" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/producto/detalle.jsp"></put-attribute>
+	</definition>
+	
+	<!-- Modulo de productos -->
+	<definition name="carrito.index" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/carrito/carrito.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="carrito.shop" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/carrito/pago.jsp"></put-attribute>
+	</definition>
+	
+	<!-- Modulo de pedido -->
+	<definition name="pedido.index" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/pedido/index.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="pedido.detalle" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/pedido/detalle.jsp"></put-attribute>
+	</definition>
+	
+	
+	<!-- Modulo de cuenta -->
+	<definition name="acount.login" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/acount/login.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="acount.registrar" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/acount/registrar.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="acount.perfil" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/acount/perfil.jsp"></put-attribute>
+	</definition>
+	
+	<!-- Modulo de empresa -->
+	<definition name="empresa.index" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/empresa/index.jsp"></put-attribute>
+	</definition>
+	
+	<!-- Modulo de administración -->
+	<definition name="admin.index" template="/WEB-INF/views/templates/master.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/admin/index.jsp"></put-attribute>
+	</definition>		
+	
+</tiles-definitions>
